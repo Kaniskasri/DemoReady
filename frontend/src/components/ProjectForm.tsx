@@ -165,15 +165,15 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({ onSubmit, isLoading, i
   };
 
   return (
-    <form onSubmit={handleSubmit} className="glass-panel rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl border border-slate-800">
+    <form onSubmit={handleSubmit} className="glass-panel rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl border border-slate-200 dark:border-slate-800">
       {/* Quick Presets */}
       <div>
         <div className="flex items-center justify-between mb-2">
-          <label className="text-xs font-semibold tracking-wider uppercase text-slate-400 flex items-center gap-1.5">
-            <Sparkles className="w-3.5 h-3.5 text-sky-400" />
+          <label className="text-xs font-semibold tracking-wider uppercase text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
+            <Sparkles className="w-3.5 h-3.5 text-sky-500 dark:text-sky-400" />
             Quick Start Presets
           </label>
-          <span className="text-xs text-slate-500">Click to autofill sample details</span>
+          <span className="text-xs text-slate-400 dark:text-slate-500">Click to autofill sample details</span>
         </div>
         <div className="flex flex-wrap gap-2">
           {PRESETS.map((p, idx) => (
@@ -181,7 +181,7 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({ onSubmit, isLoading, i
               key={idx}
               type="button"
               onClick={() => applyPreset(p.data)}
-              className="text-xs px-3 py-1.5 rounded-lg bg-slate-900/80 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700/60 hover:border-sky-500/50 transition duration-150"
+              className="text-xs px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-900/80 dark:hover:bg-slate-800 text-slate-700 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white border border-slate-300 dark:border-slate-700/60 hover:border-sky-500/50 transition duration-150 font-medium"
             >
               ⚡ {p.label}
             </button>
@@ -189,15 +189,15 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({ onSubmit, isLoading, i
         </div>
       </div>
 
-      <hr className="border-slate-800/80" />
+      <hr className="border-slate-200 dark:border-slate-800/80" />
 
       {/* Project Name */}
       <div>
         <div className="flex justify-between items-center mb-1.5">
-          <label htmlFor="projectName" className="text-sm font-semibold text-slate-200">
-            Project Name <span className="text-rose-400">*</span>
+          <label htmlFor="projectName" className="text-sm font-semibold text-slate-800 dark:text-slate-200">
+            Project Name <span className="text-rose-500 dark:text-rose-400">*</span>
           </label>
-          <span className="text-xs text-slate-500">{projectName.length}/100</span>
+          <span className="text-xs text-slate-400 dark:text-slate-500">{projectName.length}/100</span>
         </div>
         <input
           id="projectName"
@@ -206,7 +206,7 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({ onSubmit, isLoading, i
           onChange={(e) => setProjectName(e.target.value)}
           maxLength={100}
           placeholder="e.g. AI Resume Analyzer"
-          className="w-full px-4 py-2.5 rounded-xl bg-slate-900/90 border border-slate-700/80 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition"
+          className="w-full px-4 py-2.5 rounded-xl bg-white dark:bg-slate-900/90 border border-slate-300 dark:border-slate-700/80 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition shadow-sm dark:shadow-none"
           required
         />
       </div>
@@ -214,10 +214,10 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({ onSubmit, isLoading, i
       {/* Problem */}
       <div>
         <div className="flex justify-between items-center mb-1.5">
-          <label htmlFor="problem" className="text-sm font-semibold text-slate-200">
-            Problem Solved <span className="text-rose-400">*</span>
+          <label htmlFor="problem" className="text-sm font-semibold text-slate-800 dark:text-slate-200">
+            Problem Solved <span className="text-rose-500 dark:text-rose-400">*</span>
           </label>
-          <span className="text-xs text-slate-500">{problem.length}/1000</span>
+          <span className="text-xs text-slate-400 dark:text-slate-500">{problem.length}/1000</span>
         </div>
         <textarea
           id="problem"
@@ -226,7 +226,7 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({ onSubmit, isLoading, i
           onChange={(e) => setProblem(e.target.value)}
           maxLength={1000}
           placeholder="What specific friction does this solve? Why does the audience care?"
-          className="w-full px-4 py-2.5 rounded-xl bg-slate-900/90 border border-slate-700/80 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition resize-none"
+          className="w-full px-4 py-2.5 rounded-xl bg-white dark:bg-slate-900/90 border border-slate-300 dark:border-slate-700/80 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition resize-none shadow-sm dark:shadow-none"
           required
         />
       </div>
@@ -234,29 +234,29 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({ onSubmit, isLoading, i
       {/* Main Features */}
       <div>
         <div className="flex justify-between items-center mb-1.5">
-          <label className="text-sm font-semibold text-slate-200 flex items-center gap-1.5">
-            <Layers className="w-4 h-4 text-sky-400" />
-            Main Features to Demo <span className="text-rose-400">*</span>
+          <label className="text-sm font-semibold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
+            <Layers className="w-4 h-4 text-sky-500 dark:text-sky-400" />
+            Main Features to Demo <span className="text-rose-500 dark:text-rose-400">*</span>
           </label>
-          <span className="text-xs text-slate-500">1 to 8 key features</span>
+          <span className="text-xs text-slate-400 dark:text-slate-500">1 to 8 key features</span>
         </div>
         <div className="space-y-2 mb-2">
           {features.map((feat, idx) => (
             <div key={idx} className="flex gap-2 items-center">
-              <span className="text-xs font-mono text-slate-500 w-5">{idx + 1}.</span>
+              <span className="text-xs font-mono text-slate-400 dark:text-slate-500 w-5">{idx + 1}.</span>
               <input
                 type="text"
                 value={feat}
                 onChange={(e) => handleFeatureChange(idx, e.target.value)}
                 maxLength={160}
                 placeholder={`Feature ${idx + 1} (e.g. Instant skill gap detection)`}
-                className="flex-1 px-3 py-2 text-sm rounded-lg bg-slate-900 border border-slate-700 text-slate-200 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-sky-500"
+                className="flex-1 px-3 py-2 text-sm rounded-lg bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-sky-500 shadow-sm dark:shadow-none"
               />
               {features.length > 1 && (
                 <button
                   type="button"
                   onClick={() => handleRemoveFeature(idx)}
-                  className="p-2 text-slate-400 hover:text-rose-400 rounded-lg hover:bg-slate-800 transition"
+                  className="p-2 text-slate-400 hover:text-rose-500 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition"
                   title="Remove feature"
                 >
                   <X className="w-4 h-4" />
@@ -280,12 +280,12 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({ onSubmit, isLoading, i
               }}
               maxLength={160}
               placeholder="Add another feature & press Enter..."
-              className="flex-1 px-3 py-2 text-sm rounded-lg bg-slate-950/60 border border-dashed border-slate-700 text-slate-300 placeholder-slate-600 focus:outline-none focus:ring-1 focus:ring-sky-500"
+              className="flex-1 px-3 py-2 text-sm rounded-lg bg-slate-100/80 dark:bg-slate-950/60 border border-dashed border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-300 placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none focus:ring-1 focus:ring-sky-500"
             />
             <button
               type="button"
               onClick={handleAddFeature}
-              className="px-3 py-2 text-xs font-medium rounded-lg bg-slate-800 hover:bg-slate-700 text-sky-300 flex items-center gap-1 border border-slate-700 transition"
+              className="px-3 py-2 text-xs font-semibold rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-sky-700 dark:text-sky-300 flex items-center gap-1 border border-slate-300 dark:border-slate-700 transition"
             >
               <Plus className="w-3.5 h-3.5" />
               Add
@@ -299,10 +299,10 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({ onSubmit, isLoading, i
         {/* Tech Stack */}
         <div>
           <div className="flex justify-between items-center mb-1.5">
-            <label htmlFor="techStack" className="text-sm font-semibold text-slate-200">
-              Technology Stack <span className="text-xs text-slate-500 font-normal">(Optional)</span>
+            <label htmlFor="techStack" className="text-sm font-semibold text-slate-800 dark:text-slate-200">
+              Technology Stack <span className="text-xs text-slate-400 dark:text-slate-500 font-normal">(Optional)</span>
             </label>
-            <span className="text-xs text-slate-500">{techStack.length}/300</span>
+            <span className="text-xs text-slate-400 dark:text-slate-500">{techStack.length}/300</span>
           </div>
           <input
             id="techStack"
@@ -311,16 +311,16 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({ onSubmit, isLoading, i
             onChange={(e) => setTechStack(e.target.value)}
             maxLength={300}
             placeholder="e.g. React, Python, AWS Bedrock, Redis"
-            className="w-full px-4 py-2.5 rounded-xl bg-slate-900/90 border border-slate-700/80 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500 transition"
+            className="w-full px-4 py-2.5 rounded-xl bg-white dark:bg-slate-900/90 border border-slate-300 dark:border-slate-700/80 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500 transition shadow-sm dark:shadow-none"
           />
-          <p className="text-xs text-slate-500 mt-1">Helps tailor realistic failure scenarios in the Safety Net.</p>
+          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Helps tailor realistic failure scenarios in the Safety Net.</p>
         </div>
 
         {/* Demo Duration Selector */}
         <div>
-          <label className="text-sm font-semibold text-slate-200 block mb-1.5 flex items-center gap-1.5">
-            <Clock className="w-4 h-4 text-sky-400" />
-            Target Demo Duration <span className="text-rose-400">*</span>
+          <label className="text-sm font-semibold text-slate-800 dark:text-slate-200 block mb-1.5 flex items-center gap-1.5">
+            <Clock className="w-4 h-4 text-sky-500 dark:text-sky-400" />
+            Target Demo Duration <span className="text-rose-500 dark:text-rose-400">*</span>
           </label>
           <div className="grid grid-cols-3 gap-2">
             {[3, 5, 10].map((dur) => (
@@ -330,8 +330,8 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({ onSubmit, isLoading, i
                 onClick={() => setDurationMinutes(dur as DemoDuration)}
                 className={`py-2.5 px-3 rounded-xl border text-sm font-semibold flex flex-col items-center justify-center transition-all ${
                   durationMinutes === dur
-                    ? 'bg-sky-500/20 border-sky-400 text-sky-300 shadow-md shadow-sky-500/10'
-                    : 'bg-slate-900 border-slate-800 text-slate-400 hover:border-slate-700 hover:text-slate-200'
+                    ? 'bg-sky-50 dark:bg-sky-500/20 border-sky-500 dark:border-sky-400 text-sky-700 dark:text-sky-300 shadow-sm'
+                    : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-700 hover:text-slate-900 dark:hover:text-slate-200'
                 }`}
               >
                 <span>{dur} Minutes</span>
@@ -346,8 +346,8 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({ onSubmit, isLoading, i
 
       {/* Validation alert */}
       {validationError && (
-        <div className="p-3.5 rounded-xl bg-rose-950/60 border border-rose-800/80 text-rose-200 text-sm flex items-center gap-2">
-          <HelpCircle className="w-4 h-4 flex-shrink-0 text-rose-400" />
+        <div className="p-3.5 rounded-xl bg-rose-50 dark:bg-rose-950/60 border border-rose-200 dark:border-rose-800/80 text-rose-800 dark:text-rose-200 text-sm flex items-center gap-2">
+          <HelpCircle className="w-4 h-4 flex-shrink-0 text-rose-500 dark:text-rose-400" />
           <span>{validationError}</span>
         </div>
       )}
@@ -358,8 +358,8 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({ onSubmit, isLoading, i
         disabled={isLoading}
         className={`w-full py-3.5 px-6 rounded-xl font-bold text-base flex items-center justify-center gap-2 transition duration-200 shadow-lg ${
           isLoading
-            ? 'bg-slate-800 text-slate-500 cursor-not-allowed border border-slate-700'
-            : 'bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white shadow-sky-500/25 hover:shadow-sky-500/40 active:scale-[0.99]'
+            ? 'bg-slate-200 dark:bg-slate-800 text-slate-400 dark:text-slate-500 cursor-not-allowed border border-slate-300 dark:border-slate-700'
+            : 'bg-gradient-to-r from-sky-600 to-indigo-600 dark:from-sky-500 dark:to-indigo-600 hover:from-sky-500 hover:to-indigo-500 text-white shadow-sky-500/25 hover:shadow-sky-500/40 active:scale-[0.99]'
         }`}
       >
         {isLoading ? (
