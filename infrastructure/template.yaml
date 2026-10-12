@@ -1,0 +1,65 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: DemoReady - Serverless backend using AWS Lambda, API Gateway HTTP API, and Amazon Bedrock
+
+Parameters:
+  BedrockModelId:
+    Type: String
+    Default: 'amazon.nova-lite-v1:0'
+    Description: Amazon Bedrock Foundation Model ID
+
+  AllowedOrigin:
+    Type: String
+    Default: '*'
+    Description: Allowed CORS Origin for the frontend application
+
+Resources:
+  DemoReadyHttpApi:
+    Type: AWS::Serverless::HttpApi
+    Properties:
+      Name: demoready-http-api
+      CorsConfiguration:
+        AllowOrigins:
+          - !Ref AllowedOrigin
+        AllowMethods:
+          - POST
+          - OPTIONS
+        AllowHeaders:
+          - Content-Type
+          - Authorization
+          - X-Requested-With
+        MaxAge: 300
+
+  DemoReadyFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: demoready-generate-plan
+      CodeUri: ../backend/
+      Handler: lambda_function.lambda_handler
+      Runtime: python3.10
+      Timeout: 30
+      MemorySize: 256
+      Environment:
+        Variables:
+          AWS_REGION: !Ref AWS::Region
+          BEDROCK_MODEL_ID: !Ref BedrockModelId
+          ALLOWED_ORIGIN: !Ref AllowedOrigin
+          ENABLE_LOCAL_FALLBACK: 'false'
+      Policies:
+        - Statement:
+            - Effect: Allow
+              Action:
+                - bedrock:InvokeModel
+              Resource: '*'
+      Events:
+        GeneratePlan:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref DemoReadyHttpApi
+            Path: /generate-plan
+            Method: POST
+
+Outputs:
+  ApiEndpoint:
+    Description: HTTP API endpoint URL for DemoReady frontend
+    Value: !Sub "https://${DemoReadyHttpApi}.execute-api.${AWS::Region}.amazonaws.com"

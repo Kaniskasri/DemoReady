@@ -33,3 +33,6 @@ Thumbs.db
 build/
 coverage/
 *.zip
+
+# Docs exclusion
+docs/
